@@ -6,72 +6,88 @@ class Heap {
   private int capacity;
 
   public Heap(int capacity) {
-    this.storage = new int[capacity];
-    this.size = 0;
+    storage = new int[capacity];
+    size = 0;
     this.capacity = capacity;
   }
 
   public int pop() {
+    if (size == 0)
+      throw new IllegalStateException();
     return -1;
   }
 
   public int peek() {
-    return this.size != 0 ? this.storage[0] : null;
+    if (size == 0)
+      throw new IllegalStateException();
+    return storage[0];
   }
 
   public boolean add(int val) {
-    if (this.size == this.capacity)
+    if (size == capacity)
       return false;
-    this.storage[this.size] = val;
-    this.bubbleUp();
-    this.size++;
+    storage[size] = val;
+    heapifyUp();
+    size++;
     return true;
   }
 
-  private void bubbleUp() {
-    int idx = this.size;
-    while (this.getParentIdx(idx) != -1 && this.getParent(idx) > this.storage[idx]) {
-      this.swap(idx, this.getParentIdx(idx));
-      idx = this.getParentIdx(idx);
+  private void heapifyUp() {
+    int idx = size;
+    while (hasParent(idx) && parent(idx) > storage[idx]) {
+      swap(idx, getParentIdx(idx));
+      idx = getParentIdx(idx);
     }
   }
 
   private void swap(int idx1, int idx2) {
-    int temp = this.storage[idx1];
-    this.storage[idx1] = this.storage[idx2];
-    this.storage[idx2] = temp;
+    int temp = storage[idx1];
+    storage[idx1] = storage[idx2];
+    storage[idx2] = temp;
   }
 
-  public void bubbleDown() {
+  public void heapifyDown() {
     throw new UnsupportedOperationException("This method will be implemented in the next update.");
   }
 
   private int getParentIdx(int idx) {
-    return idx != 0 ? idx / 2 : -1;
+    return (idx - 1) / 2;
   }
 
   private int getLeftChildIdx(int idx) {
-    return idx * 2 < this.size ? idx * 2 : -1;
+    return idx * 2 + 1;
   }
 
   private int getRightChildIdx(int idx) {
-    return idx * 2 < this.size ? idx * 2 + 1 : -1;
+    return idx * 2 + 2;
   }
 
-  private int getParent(int idx) {
-    return this.getParentIdx(idx) != -1 ? this.storage[this.getParentIdx(idx)] : null;
+  private int parent(int idx) {
+    return storage[getParentIdx(idx)];
   }
 
-  private int getLeftChild(int idx) {
-    return this.getLeftChildIdx(idx) != -1 ? this.storage[this.getLeftChildIdx(idx)] : null;
+  private int leftChild(int idx) {
+    return storage[getLeftChildIdx(idx)];
   }
 
-  private int getRightChild(int idx) {
-    return this.getRightChildIdx(idx) != -1 ? this.storage[this.getRightChildIdx(idx)] : null;
+  private int rightChild(int idx) {
+    return storage[getRightChildIdx(idx)];
+  }
+
+  private boolean hasParent(int idx) {
+    return getParentIdx(idx) >= 0;
+  }
+
+  private boolean hasLeftChild(int idx) {
+    return getLeftChildIdx(idx) < size;
+  }
+
+  private boolean hasRightChild(int idx) {
+    return getRightChildIdx(idx) < size;
   }
 
   public void print() {
-    for (int i = 0; i < this.size; i++)
-      System.out.println(this.storage[i]);
+    for (int i = 0; i < size; i++)
+      System.out.println(storage[i]);
   }
 }
