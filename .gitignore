@@ -6,5 +6,9 @@
 *.nar
 hs_err_pid*
 
-.vscode/
-.code-workspace
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws

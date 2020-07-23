@@ -47,7 +47,7 @@ class Heap {
   }
 
   private int getParentIdx(int idx) {
-    return idx == 0 ? idx / 2 : -1;
+    return idx != 0 ? idx / 2 : -1;
   }
 
   private int getLeftChildIdx(int idx) {
@@ -68,5 +68,10 @@ class Heap {
 
   private int getRightChild(int idx) {
     return this.getRightChildIdx(idx) != -1 ? this.storage[this.getRightChildIdx(idx)] : null;
+  }
+
+  public void print() {
+    for (int i = 0; i < this.size; i++)
+      System.out.println(this.storage[i]);
   }
 }
