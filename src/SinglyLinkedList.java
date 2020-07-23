@@ -1,5 +1,5 @@
 public class SinglyLinkedList {
-    class ListNode {
+    private static class ListNode {
         public int val;
         public ListNode next;
 
@@ -99,7 +99,7 @@ public class SinglyLinkedList {
             idx++;
             runner = runner.next;
             System.out.print(runner.val);
-            if (runner.next != null)
+            if (runner.next.next != null)
                 System.out.print(", ");
         }
         System.out.println("]");

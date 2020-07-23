@@ -2,10 +2,10 @@ public class Main {
 
     public static void main(String[] args) {
 //        throw new UnsupportedOperationException();
-        SinglyLinkedList ll = new SinglyLinkedList(new int[]{1,2,3,4,5});
+        DoublyLinkedList ll = new DoublyLinkedList(new int[]{1,2,3,4,5});
         ll.print();
         System.out.println(ll.get(2));
-        ll.append(6);
+        ll.addToTail(6);
         ll.addToHead(0);
         ll.print();
         ll.removeAtIdx(4);
