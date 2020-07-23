@@ -9,6 +9,9 @@ public class Main {
         a.add(5);
         System.out.println(a.peek());
         a.add(1);
-        System.out.println(a.peek());
+        System.out.println(a.pop());
+        System.out.println(a.pop());
+        System.out.println(a.pop());
+        System.out.println(a.pop());
     }
 }

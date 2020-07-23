@@ -14,7 +14,11 @@ class Heap {
   public int pop() {
     if (size == 0)
       throw new IllegalStateException();
-    return -1;
+    int val = storage[0];
+    storage[0] = storage[size - 1];
+    size--;
+    heapifyDown();
+    return val;
   }
 
   public int peek() {
@@ -47,7 +51,17 @@ class Heap {
   }
 
   public void heapifyDown() {
-    throw new UnsupportedOperationException("This method will be implemented in the next update.");
+    int idx = 0;
+    while (hasLeftChild(idx)) {
+      int smallerIdx = getLeftChildIdx(idx);
+      if (hasRightChild(idx) && rightChild(idx) < leftChild(idx)) {
+        smallerIdx = getRightChildIdx(idx);
+      }
+      if (storage[idx] < storage[smallerIdx])
+        break;
+      swap(idx, smallerIdx);
+      idx = smallerIdx;
+    }
   }
 
   private int getParentIdx(int idx) {
