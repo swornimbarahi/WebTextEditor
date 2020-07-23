@@ -1,17 +1,16 @@
 public class Main {
 
     public static void main(String[] args) {
-        Heap a = new Heap(50);
-        a.add(4);
-        System.out.println(a.peek());
-        a.add(3);
-        System.out.println(a.peek());
-        a.add(5);
-        System.out.println(a.peek());
-        a.add(1);
-        System.out.println(a.pop());
-        System.out.println(a.pop());
-        System.out.println(a.pop());
-        System.out.println(a.pop());
+//        throw new UnsupportedOperationException();
+        SinglyLinkedList ll = new SinglyLinkedList(new int[]{1,2,3,4,5});
+        ll.print();
+        System.out.println(ll.get(2));
+        ll.append(6);
+        ll.addToHead(0);
+        ll.print();
+        ll.removeAtIdx(4);
+        ll.print();
+        ll.addAtIdx(4, 4);
+        ll.print();
     }
 }

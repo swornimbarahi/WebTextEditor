@@ -1,6 +1,4 @@
-import java.io.*;
-
-class Heap {
+public class Heap {
   private int[] storage;
   private int size;
   private int capacity;
@@ -98,10 +96,5 @@ class Heap {
 
   private boolean hasRightChild(int idx) {
     return getRightChildIdx(idx) < size;
-  }
-
-  public void print() {
-    for (int i = 0; i < size; i++)
-      System.out.println(storage[i]);
   }
 }
